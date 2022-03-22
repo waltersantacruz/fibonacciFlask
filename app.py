@@ -16,13 +16,11 @@ def send_mail(time, result):
     msg = MIMEText("prueba realizada a la hora " + time +
                    " dando como resultado: " + result)
     msg['Subject'] = 'PruebaProteccionFibonacci'
-    recipients = ['juan.gomezh@proteccion.com.co',
-                  'correalondon@gmail.com']
+    recipients = ['juan.gomezh@proteccion.com.co', 'correalondon@gmail.com']
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
     server.login(os.getenv('email'), os.getenv('password'))
-    server.sendmail(os.getenv('email'),
-                    ['soupbizkit@gmail.com', 'waltersantacruzg@gmail.com'], msg.as_string())
+    server.sendmail(os.getenv('email'), recipients, msg.as_string())
 
 # Retorna secuencia de fibonacci basado en os minutos de una hora dada.
 
